@@ -367,7 +367,8 @@ public:
 
     BOOL   SetItem(const GV_ITEM* pItem);
     BOOL   GetItem(GV_ITEM* pItem);
-    BOOL   SetItemText(int nRow, int nCol, LPCTSTR str);
+    /// TvdM, 2006: changed to virtual to allow auto set sort function, /sa CGridControlEx
+    virtual BOOL   SetItemText(int nRow, int nCol, LPCTSTR str); 
     // The following was virtual. If you want to override, use 
     //  CGridCellBase-derived class's GetText() to accomplish same thing
     CString GetItemText(int nRow, int nCol) const;

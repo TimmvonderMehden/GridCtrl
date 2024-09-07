@@ -1613,10 +1613,10 @@ void CGridCtrl::OnDraw(CDC* pDC)
     EraseBkgnd(pDC);            // OnEraseBkgnd does nothing, so erase bkgnd here.
     // This necessary since we may be using a Memory DC.
 
-#ifdef _DEBUG
-	LARGE_INTEGER iStartCount;
-	QueryPerformanceCounter(&iStartCount);
-#endif
+//#ifdef _DEBUG
+//	LARGE_INTEGER iStartCount;
+//	QueryPerformanceCounter(&iStartCount);
+//#endif
 
     CRect rect;
     int row, col;
@@ -1814,11 +1814,11 @@ void CGridCtrl::OnDraw(CDC* pDC)
     if (GetVirtualMode())
        SendCacheHintToParent(CCellRange(-1,-1,-1,-1));
 
-#ifdef _DEBUG
-	LARGE_INTEGER iEndCount;
-	QueryPerformanceCounter(&iEndCount);
+//#ifdef _DEBUG
+//	LARGE_INTEGER iEndCount;
+//	QueryPerformanceCounter(&iEndCount);
 	// TRACE1("Draw counter ticks: %d\n", iEndCount.LowPart-iStartCount.LowPart);
-#endif
+//#endif
 
 }
 
@@ -3003,7 +3003,6 @@ CCellID CGridCtrl::GetTopleftNonFixedCell(BOOL bForceRecalculation /*=FALSE*/)
 CCellRange CGridCtrl::GetVisibleNonFixedCellRange(LPRECT pRect /*=NULL*/, 
                                                   BOOL bForceRecalculation /*=FALSE*/)
 {
-    int i;
     CRect rect;
     GetClientRect(rect);
 
@@ -3011,6 +3010,7 @@ CCellRange CGridCtrl::GetVisibleNonFixedCellRange(LPRECT pRect /*=NULL*/,
 
     // calc bottom
     int bottom = GetFixedRowHeight();
+    int i = 0; // *JS*
     for (i = idTopLeft.row; i < GetRowCount(); i++)
     {
         bottom += GetRowHeight(i);
@@ -3101,8 +3101,8 @@ CCellRange CGridCtrl::GetUnobstructedNonFixedCellRange(BOOL bForceRecalculation 
     CCellID idTopLeft = GetTopleftNonFixedCell(bForceRecalculation);
 
     // calc bottom
-    int i;
     int bottom = GetFixedRowHeight();
+    int i = 0; // *JS*
     for (i = idTopLeft.row; i < GetRowCount(); i++)
     {
         bottom += GetRowHeight(i);
@@ -3777,17 +3777,16 @@ BOOL CGridCtrl::SetColumnCount(int nCols)
         // and set the default column width
         if (addedCols > 0)
         {
-            int row, col;
-
             // initialized column widths
             int startCol = nCols - addedCols;
+            int col = 0;  // *JS*
             for (col = startCol; col < nCols; col++)
                 m_arColWidths[col] = m_cellFixedColDef.GetWidth();
         
             // initialise column data
             if (!GetVirtualMode())
             {
-                for (row = 0; row < m_nRows; row++)
+                for (int row = 0; row < m_nRows; row++)
                     for (col = startCol; col < nCols; col++)
                     {
                         GRID_ROW* pRow = m_RowData[row];
@@ -5163,13 +5162,13 @@ void CGridCtrl::ExpandColumnsToFit(BOOL bExpandFixed /*=TRUE*/)
 
     EnableScrollBars(SB_HORZ, FALSE);
 
-    int col;
     CRect rect;
     GetClientRect(rect);
 
     int nFirstColumn = (bExpandFixed)? 0 : GetFixedColumnCount();
 
     int nNumColumnsAffected = 0;
+    int col = 0; // *JS*
     for (col = nFirstColumn; col < GetColumnCount(); col++)
     {
         if (m_arColWidths[col] > 0)
@@ -5263,13 +5262,13 @@ void CGridCtrl::ExpandRowsToFit(BOOL bExpandFixed /*=TRUE*/)
 
     EnableScrollBars(SB_VERT, FALSE); 
 
-    int row;
     CRect rect;
     GetClientRect(rect);
     
     int nFirstRow = (bExpandFixed)? 0 : GetFixedRowCount();
 
     int nNumRowsAffected = 0;
+    int row = 0; // *JS*
     for (row = nFirstRow; row < GetRowCount(); row++)
     {
         if (m_arRowHeights[row] > 0)
@@ -6543,7 +6542,7 @@ void CGridCtrl::OnRButtonDown(UINT nFlags, CPoint point)
 	m_bRMouseButtonDown = TRUE;
 
 #ifdef GRIDCONTROL_USE_TITLETIPS
-	TRACE0("Hiding TitleTip\n");
+//	TRACE0("Hiding TitleTip\n");
     m_TitleTip.Hide();  // hide any titletips
 #endif
 }

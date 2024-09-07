@@ -419,7 +419,7 @@ BOOL CGridCellBase::Draw(CDC* pDC, int nRow, int nCol, CRect rect,  BOOL bEraseB
 // Not yet implemented
 void CGridCellBase::OnMouseEnter()
 {
-    TRACE0("Mouse entered cell\n");
+//    TRACE0("Mouse entered cell\n");
 }
 
 void CGridCellBase::OnMouseOver()
@@ -430,31 +430,31 @@ void CGridCellBase::OnMouseOver()
 // Not Yet Implemented
 void CGridCellBase::OnMouseLeave()
 {
-    TRACE0("Mouse left cell\n");
+//    TRACE0("Mouse left cell\n");
 }
 
 void CGridCellBase::OnClick( CPoint PointCellRelative)
 {
     UNUSED_ALWAYS(PointCellRelative);
-    TRACE2("Mouse Left btn up in cell at x=%i y=%i\n", PointCellRelative.x, PointCellRelative.y);
+//    TRACE2("Mouse Left btn up in cell at x=%i y=%i\n", PointCellRelative.x, PointCellRelative.y);
 }
 
 void CGridCellBase::OnClickDown( CPoint PointCellRelative)
 {
     UNUSED_ALWAYS(PointCellRelative);
-    TRACE2("Mouse Left btn down in cell at x=%i y=%i\n", PointCellRelative.x, PointCellRelative.y);
+//    TRACE2("Mouse Left btn down in cell at x=%i y=%i\n", PointCellRelative.x, PointCellRelative.y);
 }
 
 void CGridCellBase::OnRClick( CPoint PointCellRelative)
 {
     UNUSED_ALWAYS(PointCellRelative);
-    TRACE2("Mouse right-clicked in cell at x=%i y=%i\n", PointCellRelative.x, PointCellRelative.y);
+//    TRACE2("Mouse right-clicked in cell at x=%i y=%i\n", PointCellRelative.x, PointCellRelative.y);
 }
 
 void CGridCellBase::OnDblClick( CPoint PointCellRelative)
 {
     UNUSED_ALWAYS(PointCellRelative);
-    TRACE2("Mouse double-clicked in cell at x=%i y=%i\n", PointCellRelative.x, PointCellRelative.y);
+//    TRACE2("Mouse double-clicked in cell at x=%i y=%i\n", PointCellRelative.x, PointCellRelative.y);
 }
 
 // Return TRUE if you set the cursor

@@ -138,7 +138,12 @@ inline CCellID CCellRange::GetTopLeft() const
 {
      return CCellID(m_nMinRow, m_nMinCol);
 }
-
+#ifndef max
+#define max(a,b)    (((a) > (b)) ? (a) : (b))
+#endif
+#ifndef min
+#define min(a,b)    (((a) < (b)) ? (a) : (b))
+#endif
 inline CCellRange CCellRange::Intersect(const CCellRange& rhs) const
 {
      return CCellRange(max(m_nMinRow,rhs.m_nMinRow), max(m_nMinCol,rhs.m_nMinCol),

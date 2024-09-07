@@ -72,6 +72,7 @@ private:
     CString m_sInitText;
     UINT    m_nLastChar;
     BOOL    m_bExitOnArrows;
+protected:
     CRect   m_Rect;
 };
  
